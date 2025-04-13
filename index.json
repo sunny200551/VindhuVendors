@@ -1,0 +1,1165 @@
+{
+    "hotels": [
+      {
+        "id": 1,
+        "name": "Novotel Varun Beach",
+        "location": "Visakhapatnam",
+        "image": "https://i.pinimg.com/474x/2d/97/13/2d971355dd6a912cf58a87ae2336df91.jpg",
+        "rating": 4.8,
+        "foodItems": [
+          {
+            "id": 101,
+            "name": "Andhra Chicken Biryani",
+            "price": 350,
+            "image": "https://i.pinimg.com/474x/ba/45/8f/ba458f9313522360bf769136f85d192e.jpg",
+            "description": "Spicy biryani with tender chicken, infused with coastal Andhra spices.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 102,
+            "name": "Prawn Masala Fry",
+            "price": 400,
+            "image": "https://i.pinimg.com/474x/a7/ec/7a/a7ec7af97c951316c8a2fba4c893e098.jpg",
+            "description": "Fresh prawns cooked in a tangy and spicy masala.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 103,
+            "name": "Gongura Paneer",
+            "price": 280,
+            "image": "https://i.pinimg.com/474x/2d/5f/d7/2d5fd799b3d6714c22f49c94531ad033.jpg",
+            "description": "Paneer cooked with tangy gongura leaves, a coastal specialty.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 104,
+            "name": "Bamboo Chicken",
+            "price": 380,
+            "image": "https://i.pinimg.com/474x/4b/24/fe/4b24feff9ec8b4e99227f1598dfd7b90.jpg",
+            "description": "Chicken cooked inside bamboo, giving a unique smoky flavor.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 105,
+            "name": "Rasam",
+            "price": 120,
+            "image": "https://i.pinimg.com/474x/ca/30/c5/ca30c591911c033f23b8f7cd84e5d8e9.jpg",
+            "description": "Spicy and tangy soup, perfect as a starter.",
+            "category": "Starters",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Vista(The Park Hotel)",
+        "location": "Visakhapatnam",
+        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/6f/e1/66/getlstd-property-photo.jpg?w=1200&h=800&s=1",
+        "rating": 4.6,
+        "foodItems": [
+          {
+            "id": 106,
+            "name": "Crab Masala",
+            "price": 450,
+            "image": "https://i.pinimg.com/474x/8f/74/6a/8f746a1857471fb22041facad4139278.jpg",
+            "description": "Fresh crab cooked in a rich coastal spice blend.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 107,
+            "name": "Vegetable Pulao",
+            "price": 220,
+            "image": "https://i.pinimg.com/474x/47/cd/a9/47cda9667f7680573ca0bc53a799c4dc.jpg",
+            "description": "Fragrant rice cooked with mixed vegetables and spices.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 108,
+            "name": "Fish Fry",
+            "price": 300,
+            "image": "https://i.pinimg.com/474x/32/67/9a/32679a46674eb276350b13b4dde57bfc.jpg",
+            "description": "Crispy fried fish marinated with Andhra spices.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 109,
+            "name": "Ghee Roast Dosa",
+            "price": 150,
+            "image": "https://i.pinimg.com/474x/40/65/f9/4065f908b5950723bddfa8e7a5eacb0b.jpg",
+            "description": "Crispy dosa roasted with ghee, served with chutney.",
+            "category": "Breakfast",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Dolphin Hotel",
+        "location": "Visakhapatnam",
+        "image": "https://i.pinimg.com/474x/f2/3d/1b/f23d1bbd1b74f7b8c89a3eee1e821696.jpg",
+        "rating": 4.4,
+        "foodItems": [
+          {
+            "id": 110,
+            "name": "Mutton Rogan Josh",
+            "price": 360,
+            "image": "https://i.pinimg.com/474x/e4/28/84/e42884cb977f56645c6b5be80cf2d061.jpg",
+            "description": "Rich mutton curry with aromatic spices.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 111,
+            "name": "Pesarattu",
+            "price": 140,
+            "image": "https://i.pinimg.com/474x/8f/17/62/8f17620e28f95f06b8fba3db876dfb2d.jpg",
+            "description": "Green gram dosa, a Vizag breakfast favorite.",
+            "category": "Breakfast",
+            "isVeg": true
+          },
+          {
+            "id": 112,
+            "name": "Chicken 65",
+            "price": 250,
+            "image": "https://i.pinimg.com/474x/cc/1d/3c/cc1d3ce7d2c91ebea0a497b1cec9cfce.jpg",
+            "description": "Spicy fried chicken bites, perfect as a starter.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Tulips Hotel",
+        "location": "Visakhapatnam",
+        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/7a/30/37/tulip-restaurant-green.jpg?w=1200&h=-1&s=1",
+        "rating": 4.7,
+        "foodItems": [
+          {
+            "id": 113,
+            "name": "Andhra Thali",
+            "price": 500,
+            "image": "https://i.pinimg.com/474x/24/ac/12/24ac12194fdbcadd22db9d0f1b8603dc.jpg",
+            "description": "A complete meal with rice, dal, curries, and pickles.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 114,
+            "name": "Natu Kodi Pulusu",
+            "price": 320,
+            "image": "https://i.pinimg.com/474x/75/38/31/753831685e701fa8da64cb94b8cb3802.jpg",
+            "description": "Spicy chicken curry with tamarind gravy.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 115,
+            "name": "Mirchi Bajji",
+            "price": 100,
+            "image": "https://i.pinimg.com/474x/d7/b9/6b/d7b96bf2679ee922484407111608a548.jpg",
+            "description": "Stuffed chili fritters, a popular snack.",
+            "category": "Snacks",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Four Points by Sheraton",
+        "location": "Visakhapatnam",
+        "image": "https://i.pinimg.com/474x/03/f4/69/03f469a4461e4d50142ad9bc43a92b03.jpg",
+        "rating": 4.5,
+        "foodItems": [
+          {
+            "id": 116,
+            "name": "Chepala Pulusu",
+            "price": 340,
+            "image": "https://i.pinimg.com/474x/dc/f5/c9/dcf5c9be5980e1cc6c6df637bb5b1c62.jpg",
+            "description": "Tangy fish curry, a coastal delicacy.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 117,
+            "name": "Vegetable Manchurian",
+            "price": 200,
+            "image": "https://i.pinimg.com/474x/1c/aa/34/1caa34ab70e6406206b212bad7321ba6.jpg",
+            "description": "Crispy vegetable balls in a tangy sauce.",
+            "category": "Starters",
+            "isVeg": true
+          },
+          {
+            "id": 118,
+            "name": "Gulab Jamun",
+            "price": 80,
+            "image": "https://i.pinimg.com/474x/90/24/ad/9024ad9bf546c08a5affbbe94edd8580.jpg",
+            "description": "Soft, syrupy dessert balls.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Fortune Select Grand Ridge",
+        "location": "Tirupati",
+        "image": "https://i.pinimg.com/736x/9d/d6/a8/9dd6a8c76500c5d89450629ea4e9dedb.jpg",
+        "rating": 4.6,
+        "foodItems": [
+          {
+            "id": 119,
+            "name": "Bellam Paramannam",
+            "price": 60,
+            "image": "https://i.pinimg.com/474x/b7/67/e3/b767e3fa156afc388534a39d43fbaffb.jpg",
+            "description": "Creamy rice pudding with jaggery, a Tirupati temple offering.",
+            "category": "Desserts",
+            "isVeg": true
+          },
+          {
+            "id": 120,
+            "name": "Ghee Pongal",
+            "price": 150,
+            "image": "https://i.pinimg.com/474x/2b/65/0a/2b650a7d477210b2c62ff4a54f361346.jpg",
+            "description": "Savory rice and lentil dish with ghee.",
+            "category": "Breakfast",
+            "isVeg": true
+          },
+          {
+            "id": 121,
+            "name": "Mutton Fry",
+            "price": 300,
+            "image": "https://i.pinimg.com/474x/6e/04/ad/6e04ad2abe69831e2b4e39c233e8d877.jpg",
+            "description": "Spicy dry mutton dish, rich in flavor.",
+            "category": "Main Course",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Marasa Sarovar Premiere",
+        "location": "Tirupati",
+        "image": "https://i.pinimg.com/474x/1d/80/bd/1d80bd5d8f8feb490714d907f433e0f7.jpg",
+        "rating": 4.5,
+        "foodItems": [
+          {
+            "id": 122,
+            "name": "Vegetable Biryani",
+            "price": 250,
+            "image": "https://i.pinimg.com/474x/48/bd/d9/48bdd97b9a6d9007eceb8eaf6ce7b779.jpg",
+            "description": "Aromatic rice with mixed vegetables.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 123,
+            "name": "Chicken Chettinad",
+            "price": 320,
+            "image": "https://i.pinimg.com/474x/33/2a/70/332a7033d653db7d01f4497adca77c4b.jpg",
+            "description": "Spicy chicken curry with South Indian spices.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 124,
+            "name": "Idli Sambar",
+            "price": 100,
+            "image": "https://i.pinimg.com/474x/cd/b5/86/cdb586501301fbc609ebcfda412e074a.jpg",
+            "description": "Steamed rice cakes with lentil stew.",
+            "category": "Breakfast",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Taj Tirupati",
+        "location": "Tirupati",
+        "image": "https://i.pinimg.com/474x/05/e1/b4/05e1b4ba101bc24c284b7da79b232d11.jpg",
+        "rating": 4.8,
+        "foodItems": [
+          {
+            "id": 125,
+            "name": "Andhra Prawn Curry",
+            "price": 380,
+            "image": "https://i.pinimg.com/474x/97/1c/0d/971c0d5bd78e8896c9139288bc96ab1f.jpg",
+            "description": "Prawns in a spicy Andhra-style gravy.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 126,
+            "name": "Pesarattu Upma",
+            "price": 160,
+            "image": "https://i.pinimg.com/474x/f5/f7/2a/f5f72a14e00c4b00007b6291969f6d9f.jpg",
+            "description": "Green gram dosa stuffed with upma.",
+            "category": "Breakfast",
+            "isVeg": true
+          },
+          {
+            "id": 127,
+            "name": "Payasam",
+            "price": 90,
+            "image": "https://i.pinimg.com/474x/9a/73/bb/9a73bb928a10ead41a8178379ed00858.jpg",
+            "description": "Sweet rice pudding with jaggery.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Hotel Bliss",
+        "location": "Tirupati",
+        "image": "https://i.pinimg.com/474x/15/52/66/1552660993712f6d2dd30850355ff522.jpg",
+        "rating": 4.3,
+        "foodItems": [
+          {
+            "id": 128,
+            "name": "Gongura Mutton",
+            "price": 340,
+            "image": "https://i.pinimg.com/474x/8d/2f/1d/8d2f1d9be99c37f03bc091be0de70789.jpg",
+            "description": "Mutton cooked with tangy gongura leaves.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 129,
+            "name": "Masala Dosa",
+            "price": 120,
+            "image": "https://i.pinimg.com/474x/6f/b4/b9/6fb4b95fb500d79c98fa4950a04d7340.jpg",
+            "description": "Crispy dosa with potato filling.",
+            "category": "Breakfast",
+            "isVeg": true
+          },
+          {
+            "id": 130,
+            "name": "Chicken Lollipop",
+            "price": 260,
+            "image": "https://i.pinimg.com/474x/03/ab/96/03ab961d4c8bc8ad108c5e43af0d0a2d.jpg",
+            "description": "Spicy chicken wings, Indo-Chinese style.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Lemon Tree Premier",
+        "location": "Vijayawada",
+        "image": "https://i.pinimg.com/736x/72/49/0c/72490c15e200cbe66fbf0210d5632ea6.jpg",
+        "rating": 4.7,
+        "foodItems": [
+          {
+            "id": 131,
+            "name": "Guntur Chicken Curry",
+            "price": 310,
+            "image": "https://i.pinimg.com/474x/e6/e8/56/e6e85696ec1003115fe2dfdaf93d5ac9.jpg",
+            "description": "Fiery chicken curry, a Guntur specialty.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 132,
+            "name": "Pootharekulu",
+            "price": 70,
+            "image": "https://i.pinimg.com/474x/ab/2b/2a/ab2b2a303d0f6e7836355da4c5b3237e.jpg",
+            "description": "Delicate rice paper sweet with jaggery.",
+            "category": "Snacks",
+            "isVeg": true
+          },
+          {
+            "id": 133,
+            "name": "Vada Sambar",
+            "price": 110,
+            "image": "https://i.pinimg.com/474x/75/cc/47/75cc47e6c6b3ca170a6df1a07d5a2ec9.jpg",
+            "description": "Crispy lentil fritters with sambar.",
+            "category": "Breakfast",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Quality Inn Bezawada",
+        "location": "Vijayawada",
+        "image": "https://bezkrishnaa.in/wp-content/uploads/2022/03/1.png",
+        "rating": 4.4,
+        "foodItems": [
+          {
+            "id": 134,
+            "name": "Mutton Biryani",
+            "price": 360,
+            "image": "https://i.pinimg.com/474x/74/8b/06/748b06da501ffede61587bb255ad88cf.jpg",
+            "description": "Fragrant rice with tender mutton pieces.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 135,
+            "name": " Avakaya Pappu Annam",
+            "price": 180,
+            "image": "https://i.pinimg.com/736x/dd/bb/07/ddbb07a25a752f093106108088e0d6bf.jpg",
+            "description": "Comforting rice and lentil mix.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 136,
+            "name": "Prawn Fry",
+            "price": 350,
+            "image": "https://i.pinimg.com/474x/a7/ec/7a/a7ec7af97c951316c8a2fba4c893e098.jpg",
+            "description": "Crispy prawns with spicy coating.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Novotel Vijayawada",
+        "location": "Vijayawada",
+        "image": "https://i.pinimg.com/474x/56/d0/93/56d093962b2b9da33de40b2468e0a8f0.jpg",
+        "rating": 4.8,
+        "foodItems": [
+          {
+            "id": 137,
+            "name": "Andhra Fish Curry",
+            "price": 320,
+            "image": "https://i.pinimg.com/474x/dc/f5/c9/dcf5c9be5980e1cc6c6df637bb5b1c62.jpg",
+            "description": "Spicy fish curry with tamarind.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 138,
+            "name": "Bendakaya Pulusu",
+            "price": 200,
+            "image": "https://i.pinimg.com/474x/0e/40/6f/0e406fed88ad9374a7327bf27f2df6b2.jpg",
+            "description": "Okra in tangy tamarind gravy.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 139,
+            "name": "Bobbatlu",
+            "price": 80,
+            "image": "https://i.pinimg.com/474x/5f/cd/3a/5fcd3a231df48eb51ccf018c8c3e2805.jpg",
+            "description": "Sweet stuffed flatbread.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "name": "The Kay Hotel",
+        "location": "Vijayawada",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSReDJCtWpsGDif4gkmFeTetTVFyxE_jTBXyQ&s",
+        "rating": 4.3,
+        "foodItems": [
+          {
+            "id": 140,
+            "name": "Chicken Pulao",
+            "price": 280,
+            "image": "https://i.pinimg.com/474x/d2/e9/fe/d2e9feef3148df424bd90907ab10aee4.jpg",
+            "description": "Mildly spiced rice with chicken.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 141,
+            "name": "Dondakaya Fry",
+            "price": 180,
+            "image": "https://i.pinimg.com/474x/e1/0c/5d/e10c5d0e6925c10b8830e3ad4c66b6c3.jpg",
+            "description": "Crispy tindora stir-fry.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 142,
+            "name": "Prawn 65",
+            "price": 340,
+            "image": "https://i.pinimg.com/474x/e3/00/da/e300da69897a07bec11d5e1fbc9b5315.jpg",
+            "description": "Spicy fried prawns, Indo-Chinese style.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Hotel Viceroy Grand",
+        "location": "Guntur",
+        "image": "https://i.pinimg.com/474x/44/1c/7f/441c7fb0c4352d662768272169a70c34.jpg",
+        "rating": 4.5,
+        "foodItems": [
+          {
+            "id": 143,
+            "name": "Guntur Mirchi Chicken",
+            "price": 300,
+            "image": "https://i.pinimg.com/474x/42/29/21/422921c61af835ae352681583b1dd1df.jpg",
+            "description": "Fiery chicken with Guntur chilies.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 144,
+            "name": "Pulihora",
+            "price": 150,
+            "image": "https://i.pinimg.com/474x/03/bb/74/03bb742814886e709cdb3635ecf44993.jpg",
+            "description": "Tamarind rice with spices.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 145,
+            "name": "Mysore Pak",
+            "price": 60,
+            "image": "https://i.pinimg.com/474x/c3/b0/7b/c3b07b0c8c474585795f7c77a8e0fe9a.jpg",
+            "description": "Rich ghee-based sweet.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Amaravathi Hotel",
+        "location": "Guntur",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgfHbdVfbmL-SDDLa_HC7pXKbUIcT83XPWhQ&s",
+        "rating": 4.2,
+        "foodItems": [
+          {
+            "id": 146,
+            "name": "Nellore Fish Fry",
+            "price": 320,
+            "image": "https://i.pinimg.com/474x/ed/74/52/ed745216c3b03696e98fc2ea564966ce.jpg",
+            "description": "Crispy fish fry with coastal spices.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 147,
+            "name": "Vegetable Curry",
+            "price": 180,
+            "image": "https://i.pinimg.com/474x/3e/59/39/3e59398cbd1555b64cd67691c0bf6624.jpg",
+            "description": "Mixed vegetables in a spicy gravy.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 148,
+            "name": "Ariselu",
+            "price": 70,
+            "image": "https://i.pinimg.com/474x/fc/8e/db/fc8edb0505430ca73d5b419a95160ff4.jpg",
+            "description": "Sweet rice flour fritters.",
+            "category": "Snacks",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Hotel Southern Grand",
+        "location": "Guntur",
+        "image": "https://assets.simplotel.com/simplotel/image/upload/x_0,y_309,w_2734,h_1538,r_0,c_crop,q_80,fl_progressive/w_240,h_135,c_fit,f_auto/hotel-southern---vijayawada-new-delhi/Hotel_Southern_12_nozsad",
+        "rating": 4.3,
+        "foodItems": [
+          {
+            "id": 149,
+            "name": "Mutton Pepper Fry",
+            "price": 340,
+            "image": "https://example.com/images/mutton-pepper.jpg",
+            "description": "Spicy mutton with black pepper.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 150,
+            "name": "Sambar Rice",
+            "price": 160,
+            "image": "https://example.com/images/sambar-rice.jpg",
+            "description": "Rice mixed with tangy sambar.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 151,
+            "name": "Prawn Masala",
+            "price": 360,
+            "image": "https://example.com/images/prawn-masala-guntur.jpg",
+            "description": "Prawns in a rich masala gravy.",
+            "category": "Main Course",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Sree Venkateswara Lodge",
+        "location": "Rajahmundry",
+        "image": "https://example.com/images/venkateswara-rajahmundry.jpg",
+        "rating": 4.2,
+        "foodItems": [
+          {
+            "id": 152,
+            "name": "Pulasa Fish Curry",
+            "price": 400,
+            "image": "https://example.com/images/pulasa-curry.jpg",
+            "description": "Rare Godavari fish in spicy curry.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 153,
+            "name": "Kaja",
+            "price": 60,
+            "image": "https://example.com/images/kaja.jpg",
+            "description": "Crispy layered sweet.",
+            "category": "Desserts",
+            "isVeg": true
+          },
+          {
+            "id": 154,
+            "name": "Vegetable Upma",
+            "price": 120,
+            "image": "https://example.com/images/veg-upma.jpg",
+            "description": "Savory semolina with vegetables.",
+            "category": "Breakfast",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Hotel Anand Regency",
+        "location": "Rajahmundry",
+        "image": "https://example.com/images/anand-rajahmundry.jpg",
+        "rating": 4.4,
+        "foodItems": [
+          {
+            "id": 155,
+            "name": "Royyala Iguru",
+            "price": 380,
+            "image": "https://example.com/images/royyala-iguru.jpg",
+            "description": "Spicy prawn curry, East Godavari style.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 156,
+            "name": "Ragi Sankati",
+            "price": 140,
+            "image": "https://example.com/images/ragi-sankati.jpg",
+            "description": "Finger millet balls with gravy.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 157,
+            "name": "Fish Fry",
+            "price": 300,
+            "image": "https://example.com/images/fish-fry-rajahmundry.jpg",
+            "description": "Freshwater fish fry with spices.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Hotel Shelton",
+        "location": "Rajahmundry",
+        "image": "https://example.com/images/shelton-rajahmundry.jpg",
+        "rating": 4.5,
+        "foodItems": [
+          {
+            "id": 158,
+            "name": "Chicken Fry",
+            "price": 280,
+            "image": "https://example.com/images/chicken-fry.jpg",
+            "description": "Crispy chicken with Andhra spices.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 159,
+            "name": "Pappu Charu",
+            "price": 130,
+            "image": "https://example.com/images/pappu-charu.jpg",
+            "description": "Tangy lentil soup with spices.",
+            "category": "Starters",
+            "isVeg": true
+          },
+          {
+            "id": 160,
+            "name": "Pootharekulu",
+            "price": 70,
+            "image": "https://example.com/images/pootharekulu-rajahmundry.jpg",
+            "description": "Delicate rice paper sweet.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "name": "Hotel Daspalla",
+        "location": "Kakinada",
+        "image": "https://example.com/images/daspalla-kakinada.jpg",
+        "rating": 4.6,
+        "foodItems": [
+          {
+            "id": 161,
+            "name": "Kakinada Kaja",
+            "price": 60,
+            "image": "https://example.com/images/kakinada-kaja.jpg",
+            "description": "Famous layered sweet from Kakinada.",
+            "category": "Desserts",
+            "isVeg": true
+          },
+          {
+            "id": 162,
+            "name": "Prawn Biryani",
+            "price": 380,
+            "image": "https://example.com/images/prawn-biryani.jpg",
+            "description": "Aromatic rice with fresh prawns.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 163,
+            "name": "Vegetable Fry",
+            "price": 180,
+            "image": "https://example.com/images/veg-fry.jpg",
+            "description": "Mixed vegetables stir-fried with spices.",
+            "category": "Main Course",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "name": "Venkatadri Hotel",
+        "location": "Kakinada",
+        "image": "https://example.com/images/venkatadri-kakinada.jpg",
+        "rating": 4.3,
+        "foodItems": [
+          {
+            "id": 164,
+            "name": "Crab Fry",
+            "price": 400,
+            "image": "https://example.com/images/crab-fry.jpg",
+            "description": "Spicy crab fry, a coastal favorite.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 165,
+            "name": "Gongura Dal",
+            "price": 150,
+            "image": "https://example.com/images/gongura-dal.jpg",
+            "description": "Lentils with tangy gongura leaves.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 166,
+            "name": "Fish Pulusu",
+            "price": 320,
+            "image": "https://example.com/images/fish-pulusu-kakinada.jpg",
+            "description": "Tangy fish curry with tamarind.",
+            "category": "Main Course",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "name": "Sri Kanya Hotel",
+        "location": "Nellore",
+        "image": "https://example.com/images/kanya-nellore.jpg",
+        "rating": 4.4,
+        "foodItems": [
+          {
+            "id": 167,
+            "name": "Nellore Chepala Pulusu",
+            "price": 340,
+            "image": "https://example.com/images/chepala-pulusu-nellore.jpg",
+            "description": "Famous fish curry with tangy spices.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 168,
+            "name": "Vegetable Pulao",
+            "price": 200,
+            "image": "https://example.com/images/veg-pulao-nellore.jpg",
+            "description": "Rice with mixed vegetables and spices.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 169,
+            "name": "Prawn Fry",
+            "price": 360,
+            "image": "https://example.com/images/prawn-fry-nellore.jpg",
+            "description": "Crispy prawns with Nellore spices.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "name": "Hotel MVR Grand",
+        "location": "Nellore",
+        "image": "https://example.com/images/mvr-nellore.jpg",
+        "rating": 4.2,
+        "foodItems": [
+          {
+            "id": 170,
+            "name": "Chicken Nellore Fry",
+            "price": 300,
+            "image": "https://example.com/images/chicken-fry-nellore.jpg",
+            "description": "Spicy chicken fry, Nellore style.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 171,
+            "name": "Pulihora",
+            "price": 140,
+            "image": "https://example.com/images/pulihora-nellore.jpg",
+            "description": "Tangy tamarind rice.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 172,
+            "name": "Rasam",
+            "price": 100,
+            "image": "https://example.com/images/rasam-nellore.jpg",
+            "description": "Spicy lentil soup.",
+            "category": "Starters",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "name": "Hotel Central Park",
+        "location": "Kurnool",
+        "image": "https://example.com/images/central-park-kurnool.jpg",
+        "rating": 4.3,
+        "foodItems": [
+          {
+            "id": 173,
+            "name": "Rayalaseema Mutton Curry",
+            "price": 340,
+            "image": "https://example.com/images/mutton-curry-kurnool.jpg",
+            "description": "Spicy mutton curry, Rayalaseema style.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 174,
+            "name": "Jonna Roti",
+            "price": 80,
+            "image": "https://example.com/images/jonna-roti.jpg",
+            "description": "Millet flatbread, a local favorite.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 175,
+            "name": "Chicken Fry",
+            "price": 280,
+            "image": "https://example.com/images/chicken-fry-kurnool.jpg",
+            "description": "Crispy chicken with local spices.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "name": "Hotel Sasya Pride",
+        "location": "Kurnool",
+        "image": "https://example.com/images/sasya-kurnool.jpg",
+        "rating": 4.1,
+        "foodItems": [
+          {
+            "id": 176,
+            "name": "Kurnool Kodi Pulusu",
+            "price": 320,
+            "image": "https://example.com/images/kodi-pulusu-kurnool.jpg",
+            "description": "Spicy chicken curry with tamarind.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 177,
+            "name": "Ragi Mudda",
+            "price": 120,
+            "image": "https://example.com/images/ragi-mudda.jpg",
+            "description": "Finger millet balls with curry.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 178,
+            "name": "Paya Soup",
+            "price": 150,
+            "image": "https://example.com/images/paya-soup.jpg",
+            "description": "Rich goat trotter soup.",
+            "category": "Starters",
+            "isVeg": false
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "name": "Hotel Haritha",
+        "location": "Anantapur",
+        "image": "https://example.com/images/haritha-anantapur.jpg",
+        "rating": 4.2,
+        "foodItems": [
+          {
+            "id": 179,
+            "name": "Mutton Fry",
+            "price": 300,
+            "image": "https://example.com/images/mutton-fry-anantapur.jpg",
+            "description": "Spicy dry mutton dish.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 180,
+            "name": "Vegetable Curry",
+            "price": 160,
+            "image": "https://example.com/images/veg-curry-anantapur.jpg",
+            "description": "Mixed vegetables in spicy gravy.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 181,
+            "name": "Pesarattu",
+            "price": 130,
+            "image": "https://example.com/images/pesarattu-anantapur.jpg",
+            "description": "Green gram dosa with chutney.",
+            "category": "Breakfast",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "name": "Hotel Masineni Grand",
+        "location": "Anantapur",
+        "image": "https://example.com/images/masineni-anantapur.jpg",
+        "rating": 4.3,
+        "foodItems": [
+          {
+            "id": 182,
+            "name": "Chicken Biryani",
+            "price": 320,
+            "image": "https://example.com/images/chicken-biryani-anantapur.jpg",
+            "description": "Spicy rice with tender chicken.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 183,
+            "name": "Gongura Dal",
+            "price": 140,
+            "image": "https://example.com/images/gongura-dal-anantapur.jpg",
+            "description": "Lentils with tangy gongura leaves.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 184,
+            "name": "Mysore Pak",
+            "price": 60,
+            "image": "https://example.com/images/mysore-pak-anantapur.jpg",
+            "description": "Rich ghee-based sweet.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "name": "Capital O Hotels",
+        "location": "Amaravati",
+        "image": "https://example.com/images/capital-amaravati.jpg",
+        "rating": 4.4,
+        "foodItems": [
+          {
+            "id": 185,
+            "name": "Andhra Thali",
+            "price": 450,
+            "image": "https://example.com/images/andhra-thali-amaravati.jpg",
+            "description": "Complete meal with rice, curries, and pickles.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 186,
+            "name": "Mutton Curry",
+            "price": 340,
+            "image": "https://example.com/images/mutton-curry-amaravati.jpg",
+            "description": "Rich mutton curry with spices.",
+            "category": "Main Course",
+            "isVeg": false
+          },
+          {
+            "id": 187,
+            "name": "Pootharekulu",
+            "price": 70,
+            "image": "https://example.com/images/pootharekulu-amaravati.jpg",
+            "description": "Delicate rice paper sweet.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "name": "Hotel Amaravati",
+        "location": "Amaravati",
+        "image": "https://example.com/images/amaravati-hotel.jpg",
+        "rating": 4.5,
+        "foodItems": [
+          {
+            "id": 188,
+            "name": "Chicken Fry",
+            "price": 280,
+            "image": "https://example.com/images/chicken-fry-amaravati.jpg",
+            "description": "Crispy chicken with local spices.",
+            "category": "Starters",
+            "isVeg": false
+          },
+          {
+            "id": 189,
+            "name": "Vegetable Biryani",
+            "price": 240,
+            "image": "https://example.com/images/veg-biryani-amaravati.jpg",
+            "description": "Aromatic rice with vegetables.",
+            "category": "Main Course",
+            "isVeg": true
+          },
+          {
+            "id": 190,
+            "name": "Payasam",
+            "price": 90,
+            "image": "https://example.com/images/payasam-amaravati.jpg",
+            "description": "Sweet rice pudding with jaggery.",
+            "category": "Desserts",
+            "isVeg": true
+          }
+        ]
+      }
+    ],
+
+
+    
+
+
+
+
+
+    "trending": [
+      {
+        "id": 201,
+        "hotelId": 1,
+        "name": "Andhra Chicken Biryani",
+        "price": 350,
+        "image": "https://example.com/images/chicken-biryani-trending.jpg",
+        "description": "Spicy biryani with tender chicken, a state favorite.",
+        "category": "Main Course",
+        "isVeg": false
+      },
+      {
+        "id": 202,
+        "hotelId": 9,
+        "name": "Gongura Mutton",
+        "price": 340,
+        "image": "https://example.com/images/gongura-mutton-trending.jpg",
+        "description": "Mutton cooked with tangy gongura leaves.",
+        "category": "Main Course",
+        "isVeg": false
+      },
+      {
+        "id": 203,
+        "hotelId": 3,
+        "name": "Pesarattu",
+        "price": 140,
+        "image": "https://example.com/images/pesarattu-trending.jpg",
+        "description": "Green gram dosa, a breakfast staple.",
+        "category": "Breakfast",
+        "isVeg": true
+      },
+      {
+        "id": 204,
+        "hotelId": 10,
+        "name": "Pootharekulu",
+        "price": 70,
+        "image": "https://example.com/images/pootharekulu-trending.jpg",
+        "description": "Delicate rice paper sweet from East Godavari.",
+        "category": "Desserts",
+        "isVeg": true
+      },
+      {
+        "id": 205,
+        "hotelId": 22,
+        "name": "Nellore Chepala Pulusu",
+        "price": 340,
+        "image": "https://example.com/images/chepala-pulusu-trending.jpg",
+        "description": "Tangy fish curry, a Nellore specialty.",
+        "category": "Main Course",
+        "isVeg": false
+      },
+      {
+        "id": 206,
+        "hotelId": 20,
+        "name": "Kakinada Kaja",
+        "price": 60,
+        "image": "https://example.com/images/kakinada-kaja-trending.jpg",
+        "description": "Crispy layered sweet, a Kakinada icon.",
+        "category": "Desserts",
+        "isVeg": true
+      },
+      {
+        "id": 207,
+        "hotelId": 14,
+        "name": "Guntur Mirchi Chicken",
+        "price": 300,
+        "image": "https://example.com/images/mirchi-chicken-trending.jpg",
+        "description": "Fiery chicken with Guntur chilies.",
+        "category": "Main Course",
+        "isVeg": false
+      },
+      {
+        "id": 208,
+        "hotelId": 6,
+        "name": "Tirupati Laddu",
+        "price": 50,
+        "image": "https://example.com/images/tirupati-laddu-trending.jpg",
+        "description": "Sweet prasadam from Tirupati temple.",
+        "category": "Desserts",
+        "isVeg": true
+      }
+    ]
+  }
