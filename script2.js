@@ -6,6 +6,7 @@ let vegPreference = 'all';
 let currentCategory = 'all';
 let selectedHotel = null;
 let currentUser = null;
+let selectedCity = localStorage.getItem('selectedCity') || ''; // Track selected city
 
 // DOM Elements
 let menuItemsContainer;
@@ -24,7 +25,6 @@ let orderModal;
 let closeModalBtn;
 let contactForm;
 let formMessageContainer;
-let deliveryCitySelect;
 
 // Mobile Navigation and User Authentication Elements
 const hamburgerMenu = document.getElementById('hamburgerMenu');
@@ -63,6 +63,7 @@ const profileCity = document.getElementById('profileCity');
 const profilePhoto = document.getElementById('profilePhoto');
 const profileAvatar = document.getElementById('profileAvatar');
 const profileMessage = document.getElementById('profileMessage');
+const profileCitySelect = document.getElementById('profileCitySelect');
 
 // Fetch data from index.json
 async function fetchData() {
@@ -86,11 +87,9 @@ async function fetchData() {
     }
 }
 
-// Initialize hotels section
+// Initialize hotels section based on selected city
 function initHotels() {
     const hotelCards = document.querySelector('.hotel-cards');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
     if (!hotelCards) {
         console.error('Hotel cards container not found');
         return;
@@ -102,8 +101,25 @@ function initHotels() {
         return;
     }
 
+    filterHotelsByCity();
+}
+
+// Filter hotels based on selected city
+function filterHotelsByCity() {
+    const hotelCards = document.querySelector('.hotel-cards');
+    if (!hotelCards) return;
+
     hotelCards.innerHTML = '';
-    hotelsData.forEach(hotel => {
+    const filteredHotels = selectedCity
+        ? hotelsData.filter(hotel => hotel.location === selectedCity)
+        : hotelsData;
+
+    if (filteredHotels.length === 0) {
+        hotelCards.innerHTML = '<p>No hotels available in the selected city.</p>';
+        return;
+    }
+
+    filteredHotels.forEach(hotel => {
         const hotelCard = document.createElement('div');
         hotelCard.classList.add('hotel-card');
         hotelCard.innerHTML = `
@@ -120,15 +136,6 @@ function initHotels() {
         hotelCards.appendChild(hotelCard);
     });
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            const location = button.getAttribute('data-location');
-            filterHotels(location);
-        });
-    });
-
     document.querySelectorAll('.view-menu-btn').forEach(button => {
         button.addEventListener('click', () => {
             const hotelId = parseInt(button.getAttribute('data-id'));
@@ -137,21 +144,12 @@ function initHotels() {
     });
 }
 
-function filterHotels(location) {
-    const hotelCards = document.querySelectorAll('.hotel-card');
-    hotelCards.forEach(card => {
-        const hotel = hotelsData.find(h => h.id === parseInt(card.querySelector('.view-menu-btn').getAttribute('data-id')));
-        if (location === 'all' || hotel.location === location) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
-
 function isBreakfastTime() {
     const now = new Date();
-    return now.getHours() < 11;
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    // Breakfast is available from 6:00 AM to 11:00 AM and 6:00 PM to 10:00 PM
+    return (hours >= 6 && hours < 11) || (hours >= 18 && hours < 22);
 }
 
 function showHotelMenu(hotelId) {
@@ -208,12 +206,7 @@ function backToHotels() {
     vegPreference = 'all';
     currentCategory = 'all';
 
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-location') === 'all');
-    });
-    filterHotels('all');
-
+    filterHotelsByCity();
     stopTimeCheck();
 }
 
@@ -260,7 +253,7 @@ function displayMenuItems(category, vegPref) {
     if (!isBreakfastTime() && category === 'Breakfast') {
         menuItemsContainer.innerHTML = `
             <p class="time-message">
-                It’s Lunch or Dinner time! Breakfast is available until 11:00 AM.
+                Breakfast is available from 6:00 AM to 11:00 AM and 6:00 PM to 10:00 PM.
             </p>
         `;
         return;
@@ -352,7 +345,14 @@ function initTrendingDishes() {
     if (!trendingWrapper) return;
 
     trendingWrapper.innerHTML = '';
-    trendingData.forEach(item => {
+    const filteredTrending = selectedCity
+        ? trendingData.filter(item => {
+              const hotel = hotelsData.find(h => h.id === item.hotelId);
+              return hotel && hotel.location === selectedCity;
+          })
+        : trendingData;
+
+    filteredTrending.forEach(item => {
         const rating = (Math.random() * (5 - 4) + 4).toFixed(1);
         trendingWrapper.innerHTML += `
             <div class="trending-item">
@@ -395,18 +395,12 @@ function addToCart(e) {
     // Determine if item is from trending or hotel menu
     menuItem = trendingData.find(item => item.id === itemId);
     let hotelId = null;
-    let hotelCity = null;
 
     if (menuItem) {
         hotelId = menuItem.hotelId || null;
-        if (hotelId) {
-            const hotel = hotelsData.find(h => h.id === hotelId);
-            hotelCity = hotel ? hotel.location : null;
-        }
     } else if (selectedHotel) {
         menuItem = selectedHotel.foodItems.find(item => item.id === itemId);
         hotelId = selectedHotel.id;
-        hotelCity = selectedHotel.location;
     }
 
     if (!menuItem) {
@@ -414,15 +408,8 @@ function addToCart(e) {
         return;
     }
 
-    // Validate city if cart already has items
-    const deliveryCity = deliveryCitySelect?.value || localStorage.getItem('deliveryCity');
-    if (cart.length > 0 && deliveryCity && hotelCity && deliveryCity.toLowerCase() !== hotelCity.toLowerCase()) {
-        showNotification(`Unable to add ${menuItem.name}. We cannot deliver items from ${hotelCity} to ${deliveryCity}.`);
-        return;
-    }
-
     // Add item to cart
-    const cartItem = { ...menuItem, quantity: 1, hotelId, hotelCity };
+    const cartItem = { ...menuItem, quantity: 1, hotelId };
     const existingItem = cart.find(item => item.id === itemId);
     if (existingItem) {
         existingItem.quantity += 1;
@@ -435,7 +422,7 @@ function addToCart(e) {
 }
 
 function updateCart() {
-    if (!cartItemsContainer || !cartCountElement || !subtotalElement || !totalElement || !checkoutBtn || !deliveryCitySelect) return;
+    if (!cartItemsContainer || !cartCountElement || !subtotalElement || !totalElement || !checkoutBtn) return;
 
     cartItemsContainer.innerHTML = '';
     let cartCount = 0;
@@ -480,7 +467,7 @@ function updateCart() {
     subtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
     document.getElementById('tax').textContent = `₹${taxAmount.toFixed(2)}`;
     totalElement.textContent = `₹${(subtotal + deliveryFee + taxAmount).toFixed(2)}`;
-    checkoutBtn.disabled = cart.length === 0 || !deliveryCitySelect.value;
+    checkoutBtn.disabled = cart.length === 0;
 
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -550,31 +537,14 @@ function closeAll() {
     closeAllModals();
 }
 
-function setDeliveryAddress(city) {
-    localStorage.setItem('deliveryCity', city);
-}
-
 function placeOrder() {
-    const deliveryCity = deliveryCitySelect.value;
-    if (!deliveryCity) {
-        showNotification('Please select a delivery city before proceeding.');
-        return;
-    }
     if (cart.length === 0) {
         showNotification('Your cart is empty.');
         return;
     }
 
-    // Validate cart items' cities
-    const cartCities = [...new Set(cart.map(item => item.hotelCity))];
-    if (cartCities.length > 1 || (cartCities[0] && cartCities[0].toLowerCase() !== deliveryCity.toLowerCase())) {
-        showNotification('All items must be from the same city as your delivery city.');
-        return;
-    }
-
-    setDeliveryAddress(deliveryCity);
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = `IPayment.html?city=${encodeURIComponent(deliveryCity)}`;
+    window.location.href = `IPayment.html`;
 }
 
 function handleFormSubmit(e) {
@@ -678,6 +648,9 @@ function setupModalEventListeners() {
             localStorage.setItem('users', JSON.stringify(users));
             currentUser = newUser;
             localStorage.setItem('currentUser', JSON.stringify(newUser));
+            selectedCity = city; // Set selected city on signup
+            localStorage.setItem('selectedCity', selectedCity);
+            filterHotelsByCity();
             updateUserInterface();
             signupMessage.textContent = 'Account created successfully!';
             signupMessage.className = 'message success';
@@ -724,7 +697,10 @@ function setupModalEventListeners() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             currentUser = null;
+            selectedCity = ''; // Reset selected city on logout
             localStorage.removeItem('currentUser');
+            localStorage.removeItem('selectedCity');
+            filterHotelsByCity();
             updateUserInterface();
             closeModal(profileModal);
         });
@@ -753,6 +729,25 @@ function setupModalEventListeners() {
                 profileMessage.textContent = 'Please select a valid image file.';
                 profileMessage.className = 'message error';
             }
+        });
+    }
+
+    if (profileCitySelect) {
+        profileCitySelect.addEventListener('change', () => {
+            selectedCity = profileCitySelect.value;
+            localStorage.setItem('selectedCity', selectedCity);
+            if (currentUser) {
+                currentUser.city = selectedCity;
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(u => u.email === currentUser.email);
+                if (userIndex !== -1) {
+                    users[userIndex].city = selectedCity;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            filterHotelsByCity();
+            showNotification(`City changed to ${selectedCity || 'All Cities'}`);
         });
     }
 }
@@ -790,6 +785,9 @@ function updateProfileModal() {
         if (profileAvatar) {
             profileAvatar.innerHTML = currentUser.photo ? `<img src="${currentUser.photo}" alt="Profile">` : '👤';
         }
+        if (profileCitySelect) {
+            profileCitySelect.value = currentUser.city || '';
+        }
     }
 }
 
@@ -808,7 +806,6 @@ function init() {
     closeModalBtn = document.getElementById('closeModal');
     contactForm = document.getElementById('contactForm');
     formMessageContainer = document.getElementById('formMessage');
-    deliveryCitySelect = document.getElementById('deliveryCitySelect');
 
     if (hamburgerMenu) {
         hamburgerMenu.addEventListener('click', () => {
@@ -842,12 +839,9 @@ function init() {
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
         currentUser = JSON.parse(savedUser);
+        selectedCity = currentUser.city || selectedCity;
+        localStorage.setItem('selectedCity', selectedCity);
         updateUserInterface();
-    }
-
-    const savedDeliveryCity = localStorage.getItem('deliveryCity');
-    if (savedDeliveryCity && deliveryCitySelect) {
-        deliveryCitySelect.value = savedDeliveryCity;
     }
 }
 
@@ -981,21 +975,6 @@ document.head.insertAdjacentHTML('beforeend', `
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
-        }
-        #cart .delivery-city {
-            margin: 10px 0;
-            padding: 10px;
-        }
-        #cart .delivery-city select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23333"><polygon points="0,0 12,0 6,6"/></svg>') no-repeat right 10px center;
-            background-size: 12px;
-            cursor: pointer;
         }
     </style>
 `);
