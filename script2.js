@@ -976,39 +976,6 @@ document.head.insertAdjacentHTML('beforeend', `
             max-width: 400px;
             margin: 0 auto;
         }
-        /* New CSS for adjusting "Back to Hotels" button in mobile view */
-        #hotelMenuHeader {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        #hotelMenuHeader .section-title {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        #hotelMenuHeader .back-to-hotels-btn {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            width: 100%;
-            max-width: 200px;
-        }
-        @media (max-width: 600px) {
-            #hotelMenuHeader {
-                text-align: center;
-            }
-            #hotelMenuHeader .back-to-hotels-btn {
-                margin-top: 15px;
-                width: 80%;
-                max-width: none;
-            }
-        }
     </style>
 `);
 document.addEventListener('DOMContentLoaded', init);
