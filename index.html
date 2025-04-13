@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VindhuVendors</title>
+    <title>Vindhu Vendors</title>
     <link rel="Website icon" href="VV logo.jpg" type="image/jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styling.css">
-    <style>
-        /* Same styles as provided, with minor additions for profile photo and forgot password */
+  <style>
+        /*  for profile photo and forgot password */
         .profile-avatar img {
             width: 100px;
             height: 100px;
@@ -16,8 +16,8 @@
             object-fit: cover;
         }
         .profile-icon img {
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
         }
         .forgot-password {
@@ -1181,7 +1181,7 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Login</h2>
+                <h2>Login</hena>
                 <span class="close">×</span>
             </div>
             <div class="modal-body">
@@ -1309,6 +1309,22 @@
                     <label for="profilePhoto">Upload Profile Photo</label>
                     <input type="file" id="profilePhoto" accept="image/*">
                 </div>
+                <div class="form-group">
+                    <label for="profileCitySelect">Change City</label>
+                    <select id="profileCitySelect">
+                        <option value="">Select City</option>
+                        <option value="Visakhapatnam">Visakhapatnam</option>
+                        <option value="Vijayawada">Vijayawada</option>
+                        <option value="Tirupati">Tirupati</option>
+                        <option value="Guntur">Guntur</option>
+                        <option value="Rajahmundry">Rajahmundry</option>
+                        <option value="Kakinada">Kakinada</option>
+                        <option value="Nellore">Nellore</option>
+                        <option value="Kurnool">Kurnool</option>
+                        <option value="Anantapur">Anantapur</option>
+                        <option value="Amaravati">Amaravati</option>
+                    </select>
+                </div>
                 <div id="profileMessage" class="message"></div>
                 <div class="profile-actions">
                     <button id="logoutBtn" class="logout-btn">Logout</button>
@@ -1342,19 +1358,6 @@
     <section class="hotels-section" id="hotels">
         <div class="container">
             <h2 class="section-title">Famous Hotels in Andhra Pradesh</h2>
-            <div class="hotel-filters">
-                <button class="filter-btn active" data-location="all">All</button>
-                <button class="filter-btn" data-location="Visakhapatnam">Visakhapatnam</button>
-                <button class="filter-btn" data-location="Vijayawada">Vijayawada</button>
-                <button class="filter-btn" data-location="Tirupati">Tirupati</button>
-                <button class="filter-btn" data-location="Guntur">Guntur</button>
-                <button class="filter-btn" data-location="Rajahmundry">Rajahmundry</button>
-                <button class="filter-btn" data-location="Kakinada">Kakinada</button>
-                <button class="filter-btn" data-location="Nellore">Nellore</button>
-                <button class="filter-btn" data-location="Kurnool">Kurnool</button>
-                <button class="filter-btn" data-location="Anantapur">Anantapur</button>
-                <button class="filter-btn" data-location="Amaravati">Amaravati</button>
-            </div>
             <div class="hotel-cards">
                 <!-- Hotel cards will be dynamically added here -->
             </div>
@@ -1415,22 +1418,6 @@
                 <div class="total-row total">
                     <span>Total:</span>
                     <span id="total">₹0.00</span>
-                </div>
-                <div class="delivery-city">
-                    <label for="deliveryCitySelect">Delivery City</label>
-                    <select id="deliveryCitySelect" required>
-                        <option value="">Select City</option>
-                        <option value="Visakhapatnam">Visakhapatnam</option>
-                        <option value="Vijayawada">Vijayawada</option>
-                        <option value="Tirupati">Tirupati</option>
-                        <option value="Guntur">Guntur</option>
-                        <option value="Rajahmundry">Rajahmundry</option>
-                        <option value="Kakinada">Kakinada</option>
-                        <option value="Nellore">Nellore</option>
-                        <option value="Kurnool">Kurnool</option>
-                        <option value="Anantapur">Anantapur</option>
-                        <option value="Amaravati">Amaravati</option>
-                    </select>
                 </div>
             </div>
             <button id="checkoutBtn" disabled>Checkout</button>
