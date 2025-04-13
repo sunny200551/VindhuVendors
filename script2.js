@@ -574,7 +574,7 @@ function placeOrder() {
 
     setDeliveryAddress(deliveryCity);
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = `Ipayment.html?city=${encodeURIComponent(deliveryCity)}`;
+    window.location.href = `IPayment.html?city=${encodeURIComponent(deliveryCity)}`;
 }
 
 function handleFormSubmit(e) {
