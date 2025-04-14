@@ -976,6 +976,21 @@ document.head.insertAdjacentHTML('beforeend', `
             max-width: 400px;
             margin: 0 auto;
         }
+         #cart .delivery-city {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        #cart .delivery-city select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23333"><polygon points="0,0 12,0 6,6"/></svg>') no-repeat right 10px center;
+            background-size: 12px;
+            cursor: pointer;
+        }
     </style>
 `);
 document.addEventListener('DOMContentLoaded', init);
