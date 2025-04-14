@@ -6,7 +6,7 @@ let vegPreference = 'all';
 let currentCategory = 'all';
 let selectedHotel = null;
 let currentUser = null;
-let selectedCity = localStorage.getItem('selectedCity') || ''; // Track selected city
+let selectedCity = localStorage.getItem('selectedCity') || '';
 
 // DOM Elements
 let menuItemsContainer;
@@ -25,6 +25,7 @@ let orderModal;
 let closeModalBtn;
 let contactForm;
 let formMessageContainer;
+let enlargedImageModal;
 
 // Mobile Navigation and User Authentication Elements
 const hamburgerMenu = document.getElementById('hamburgerMenu');
@@ -41,7 +42,7 @@ const desktopSignupBtn = document.getElementById('desktopSignupBtn');
 const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
 const loginModal = document.getElementById('loginModal');
 const signupModal = document.getElementById('signupModal');
-const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+const forgotPasswordModal =document.getElementById('forgotPasswordModal');
 const profileModal = document.getElementById('profileModal');
 const profileSection = document.getElementById('profileSection');
 const desktopProfileSection = document.getElementById('desktopProfileSection');
@@ -65,6 +66,15 @@ const profileAvatar = document.getElementById('profileAvatar');
 const profileMessage = document.getElementById('profileMessage');
 const profileCitySelect = document.getElementById('profileCitySelect');
 
+// Create enlarged image modal
+function createEnlargedImageModal() {
+    enlargedImageModal = document.createElement('div');
+    enlargedImageModal.id = 'enlargedImageModal';
+    enlargedImageModal.className = 'enlarged-image-modal';
+    enlargedImageModal.innerHTML = '<img id="enlargedImage" src="" alt="Enlarged item">';
+    document.body.appendChild(enlargedImageModal);
+}
+
 // Fetch data from index.json
 async function fetchData() {
     try {
@@ -75,7 +85,7 @@ async function fetchData() {
         const data = await response.json();
         hotelsData = data.hotels || [];
         trendingData = data.trending || [];
-        localStorage.setItem('hotelsData', JSON.stringify(hotelsData)); // Store for Ipayment.html
+        localStorage.setItem('hotelsData', JSON.stringify(hotelsData));
         initHotels();
         initTrendingDishes();
     } catch (error) {
@@ -147,8 +157,6 @@ function filterHotelsByCity() {
 function isBreakfastTime() {
     const now = new Date();
     const hours = now.getHours();
-    const minutes = now.getMinutes();
-    // Breakfast is available from 6:00 AM to 11:00 AM and 6:00 PM to 10:00 PM
     return (hours >= 6 && hours < 11) || (hours >= 18 && hours < 22);
 }
 
@@ -269,7 +277,7 @@ function displayMenuItems(category, vegPref) {
         menuItemElement.classList.add('menu-item');
         menuItemElement.innerHTML = `
             <div class="item-img">
-                <img src="${item.image || 'https://via.placeholder.com/200'}" alt="${item.name}">
+                <img src="${item.image || 'https://via.placeholder.com/200'}" alt="${item.name}" class="clickable-img">
                 <span class="veg-indicator ${item.isVeg ? 'veg' : 'nonveg'}"></span>
             </div>
             <div class="item-info">
@@ -286,6 +294,14 @@ function displayMenuItems(category, vegPref) {
 
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', addToCart);
+    });
+
+    document.querySelectorAll('.clickable-img').forEach(img => {
+        img.addEventListener('click', () => {
+            const src = img.src;
+            document.getElementById('enlargedImage').src = src;
+            enlargedImageModal.style.display = 'flex';
+        });
     });
 }
 
@@ -356,7 +372,7 @@ function initTrendingDishes() {
         const rating = (Math.random() * (5 - 4) + 4).toFixed(1);
         trendingWrapper.innerHTML += `
             <div class="trending-item">
-                <img src="${item.image || 'https://via.placeholder.com/200'}" alt="${item.name}">
+                <img src="${item.image || 'https://via.placeholder.com/200'}" alt="${item.name}" class="clickable-img">
                 <div class="trending-content">
                     <h3>${item.name}</h3>
                     <span class="trending-price">₹${item.price.toFixed(2)}</span>
@@ -377,6 +393,14 @@ function initTrendingDishes() {
         button.addEventListener('click', addToCart);
     });
 
+    document.querySelectorAll('.clickable-img').forEach(img => {
+        img.addEventListener('click', () => {
+            const src = img.src;
+            document.getElementById('enlargedImage').src = src;
+            enlargedImageModal.style.display = 'flex';
+        });
+    });
+
     const trendingContainer = document.querySelector('.trending-container');
     if (trendingContainer) {
         trendingContainer.addEventListener('mouseenter', () => {
@@ -392,7 +416,6 @@ function addToCart(e) {
     const itemId = parseInt(e.target.getAttribute('data-id'));
     let menuItem = null;
 
-    // Determine if item is from trending or hotel menu
     menuItem = trendingData.find(item => item.id === itemId);
     let hotelId = null;
 
@@ -408,7 +431,6 @@ function addToCart(e) {
         return;
     }
 
-    // Add item to cart
     const cartItem = { ...menuItem, quantity: 1, hotelId };
     const existingItem = cart.find(item => item.id === itemId);
     if (existingItem) {
@@ -534,6 +556,7 @@ function closeAll() {
     if (cartContainer) cartContainer.classList.remove('open');
     if (orderModal) orderModal.classList.remove('open');
     if (overlay) overlay.style.display = 'none';
+    if (enlargedImageModal) enlargedImageModal.style.display = 'none';
     closeAllModals();
 }
 
@@ -543,8 +566,22 @@ function placeOrder() {
         return;
     }
 
+    if (!currentUser) {
+        const hotelIds = [...new Set(cart.map(item => item.hotelId).filter(id => id !== null))];
+        const cities = hotelIds.map(id => {
+            const hotel = hotelsData.find(h => h.id === id);
+            return hotel ? hotel.location : null;
+        }).filter(city => city !== null);
+
+        const uniqueCities = [...new Set(cities)];
+        if (uniqueCities.length > 1) {
+            showNotification('Please select items from a single city for delivery. We cannot deliver items from multiple cities in one order.');
+            return;
+        }
+    }
+
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = `IPayment.html`;
+    window.location.href = `Ipayment.html`;
 }
 
 function handleFormSubmit(e) {
@@ -648,7 +685,7 @@ function setupModalEventListeners() {
             localStorage.setItem('users', JSON.stringify(users));
             currentUser = newUser;
             localStorage.setItem('currentUser', JSON.stringify(newUser));
-            selectedCity = city; // Set selected city on signup
+            selectedCity = city;
             localStorage.setItem('selectedCity', selectedCity);
             filterHotelsByCity();
             updateUserInterface();
@@ -697,7 +734,7 @@ function setupModalEventListeners() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             currentUser = null;
-            selectedCity = ''; // Reset selected city on logout
+            selectedCity = '';
             localStorage.removeItem('currentUser');
             localStorage.removeItem('selectedCity');
             filterHotelsByCity();
@@ -807,6 +844,8 @@ function init() {
     contactForm = document.getElementById('contactForm');
     formMessageContainer = document.getElementById('formMessage');
 
+    createEnlargedImageModal();
+
     if (hamburgerMenu) {
         hamburgerMenu.addEventListener('click', () => {
             hamburgerMenu.classList.toggle('active');
@@ -831,6 +870,9 @@ function init() {
     if (checkoutBtn) checkoutBtn.addEventListener('click', placeOrder);
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeAll);
     if (contactForm) contactForm.addEventListener('submit', handleFormSubmit);
+    if (enlargedImageModal) enlargedImageModal.addEventListener('click', () => {
+        enlargedImageModal.style.display = 'none';
+    });
 
     setupModalEventListeners();
     fetchData();
@@ -845,7 +887,7 @@ function init() {
     }
 }
 
-// CSS for notifications, overlays, time message, updated menu layout, and button adjustment
+// CSS for notifications, overlays, time message, updated menu layout, button adjustment, and new features
 document.head.insertAdjacentHTML('beforeend', `
     <style>
         .notification {
@@ -854,11 +896,12 @@ document.head.insertAdjacentHTML('beforeend', `
             right: 20px;
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
+            padding: 15px 25px;
+            border-radius: 8px;
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 3000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .notification.show {
             opacity: 1;
@@ -890,7 +933,7 @@ document.head.insertAdjacentHTML('beforeend', `
         }
         .category-btn {
             margin: 5px;
-            padding: 10px;
+            padding: incorrectly formatted CSS property value in .category-btn
             border: 1px solid #ccc;
             background: #f9f9f9;
             cursor: pointer;
@@ -901,6 +944,19 @@ document.head.insertAdjacentHTML('beforeend', `
             color: white;
             border-color: #007bff;
         }
+        .hotel-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .hotel-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
         #hotelMenuItems {
             display: flex;
             flex-wrap: wrap;
@@ -909,6 +965,7 @@ document.head.insertAdjacentHTML('beforeend', `
             padding: 20px 0;
         }
         .menu-item {
+            display: flex;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -917,18 +974,28 @@ document.head.insertAdjacentHTML('beforeend', `
             max-width: 400px;
             margin: 0 auto;
             transition: transform 0.2s;
+            flex-direction: column;
         }
         .menu-item:hover {
             transform: translateY(-5px);
         }
+        .menu-item .item-img {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            cursor: pointer;
+        }
         .menu-item .item-img img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
         }
         .menu-item .item-info {
             padding: 15px;
             text-align: left;
+            flex: 1;
         }
         .menu-item .item-title {
             display: flex;
@@ -956,6 +1023,24 @@ document.head.insertAdjacentHTML('beforeend', `
         .menu-item .add-to-cart:hover {
             background-color: #ff3333;
         }
+        .enlarged-image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .enlarged-image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
         @media (min-width: 600px) {
             #hotelMenuItems {
                 justify-content: flex-start;
@@ -976,21 +1061,7 @@ document.head.insertAdjacentHTML('beforeend', `
             max-width: 400px;
             margin: 0 auto;
         }
-         #cart .delivery-city {
-            margin: 10px 0;
-            padding: 10px;
-        }
-        #cart .delivery-city select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            appearance: none;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23333"><polygon points="0,0 12,0 6,6"/></svg>') no-repeat right 10px center;
-            background-size: 12px;
-            cursor: pointer;
-        }
     </style>
 `);
+
 document.addEventListener('DOMContentLoaded', init);
