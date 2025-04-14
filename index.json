@@ -11,7 +11,7 @@
           "id": 101,
           "name": "Andhra Chicken Biryani",
           "price": 350,
-          "image": "https://i.pinimg.com/474x/ba/45/8f/ba458f9313522360bf769136f85d192e.jpg",
+          "image": "https://i.pinimg.com/474x/ac/21/ff/ac21ff85f5b9ee0d21ec6a33cddba093.jpg",
           "description": "Spicy biryani with tender chicken, infused with coastal Andhra spices.",
           "category": "Main Course",
           "isVeg": false
@@ -20,7 +20,7 @@
           "id": 102,
           "name": "Prawn Masala Fry",
           "price": 400,
-          "image": "https://i.pinimg.com/474x/a7/ec/7a/a7ec7af97c951316c8a2fba4c893e098.jpg",
+          "image": "https://i.pinimg.com/474x/12/ce/29/12ce2958fc0c08584621d0c174e2568a.jpg",
           "description": "Fresh prawns cooked in a tangy and spicy masala.",
           "category": "Starters",
           "isVeg": false
@@ -29,7 +29,7 @@
           "id": 103,
           "name": "Gongura Paneer",
           "price": 280,
-          "image": "https://i.pinimg.com/474x/2d/5f/d7/2d5fd799b3d6714c22f49c94531ad033.jpg",
+          "image": "https://i.pinimg.com/474x/e9/26/e3/e926e3d0d69b3def79d6b24619741925.jpg",
           "description": "Paneer cooked with tangy gongura leaves, a coastal specialty.",
           "category": "Main Course",
           "isVeg": true
@@ -460,7 +460,7 @@
         {
           "id": 245,
           "name": "Fish Apollo",
-          "price": 30,
+          "price": 430,
           "image": "https://i.pinimg.com/736x/9d/87/41/9d8741f74eaa0927cfceded6d08df9ca.jpg",
           "description": "Tasty and spicy",
           "category": "Starters",
