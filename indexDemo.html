@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vindhu Vendors</title>
+    <link rel="Website icon" href="VV logo.jpg" type="image/jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styling.css">
+  <style>
+        /* Same styles as provided, with minor additions for profile photo and forgot password */
+        .profile-avatar img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-icon img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        .forgot-password {
+            color: #e74c3c;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #020202;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 130px;
+            height: auto;
+            transition: transform 0.3s; /* Added transition for normal state */
+        }
+
+        .logo img:hover {
+            transform: scale(1.5);
+            transition: transform 0.3s; /* Transition for hover state */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            width: 30px;
+            cursor: pointer;
+            z-index: 1010;
+        }
+
+        .bar {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: #fff;
+            padding: 80px 20px 40px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+        }
+
+        .mobile-nav .nav-links li {
+            margin: 10px 0;
+        }
+
+        .mobile-nav .nav-links a {
+            color: #333;
+        }
+
+        .desktop-nav {
+            display: flex;
+        }
+
+        /* User Actions (Login/Sign Up) */
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-actions a {
+            padding: 8px 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            background: #fefefe;
+            border-radius: 80px;
+            transition: color 0.3s;
+        }
+
+        .user-actions a:hover {
+            color: #e74c3c;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .profile-icon {
+            font-size: 24px;
+        }
+
+        .username {
+            font-weight: 500;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .modal-footer a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Profile Modal */
+        .profile-details {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            font-size: 60px;
+            background-color: #f5f5f5;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .profile-info p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .profile-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('FoodBG.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Trending Dishes */
+        .trending-dishes {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .trending-container {
+            overflow: hidden;
+        }
+
+        .trending-wrapper {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        .trending-item {
+            flex: 0 0 300px;
+            margin-right: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .trending-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .trending-content {
+            padding: 15px;
+        }
+
+        .trending-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .trending-price {
+            font-size: 16px;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .trending-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .trending-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trending-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .trending-veg-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .trending-veg-indicator.veg {
+            background-color: green;
+        }
+
+        .trending-veg-indicator.nonveg {
+            background-color: red;
+        }
+
+        .trending-btn {
+            padding: 8px 15px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .trending-btn:hover {
+            background-color: #e74c3c;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Hotels Section */
+        .hotels-section {
+            padding: 60px 0;
+        }
+
+        .hotel-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .hotel-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .hotel-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotel-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hotel-info {
+            padding: 15px;
+        }
+
+        .hotel-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .hotel-location, .hotel-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .view-menu-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .view-menu-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Menu Section */
+        .categories {
+            padding: 60px 0;
+        }
+
+        .veg-nonveg-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .food-type-btn {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .food-type-btn.active, .food-type-btn:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .veg-icon, .nonveg-icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .veg-icon {
+            background-color: green;
+        }
+
+        .nonveg-icon {
+            background-color: red;
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-img {
+            position: relative;
+        }
+
+        .item-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .veg-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .veg-indicator.veg {
+            background-color: green;
+        }
+
+        .veg-indicator.nonveg {
+            background-color: red;
+        }
+
+        .item-info {
+            padding: 15px;
+        }
+
+        .item-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .item-price {
+            font-size: 16px;
+            color: #e74c3c;
+        }
+
+        .item-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e74c3c;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 400px;
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1500;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header h2 {
+            font-size: 24px;
+        }
+
+        #closeCart {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        #cartItems {
+            padding: 20px;
+            max-height: calc(100vh - 300px);
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            position: relative;
+            width: 80px;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .cart-item-price {
+            font-size: 14px;
+            color: #e74c3c;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .quantity {
+            font-size: 14px;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            margin-bottom: 20px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .total-row.total {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .delivery-city {
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        .delivery-city select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23333"><polygon points="0,0 12,0 6,6"/></svg>') no-repeat right 10px center;
+            background-size: 12px;
+            cursor: pointer;
+        }
+
+        #checkoutBtn {
+            width: 100%;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #checkoutBtn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #checkoutBtn:hover:not(:disabled) {
+            background-color: #c0392b;
+        }
+
+        /* Overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1400;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+        }
+
+        .contact-details h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        #contactForm textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #submitForm {
+            width: 100%;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #submitForm:hover {
+            background-color: #c0392b;
+        }
+
+        #formMessage {
+            margin-top: 10px;
+        }
+
+        /* Order Modal */
+        #orderModal .modal-content {
+            max-width: 600px;
+        }
+
+        #orderSummary {
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #020202;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #e74c3c;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        /* No Hotel Selected */
+        #noHotelSelected {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .desktop-nav, .desktop-user-section {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-to-hotels-btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .back-to-hotels-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .back-to-hotels-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .back-to-hotels-btn.active {
+            background-color: #e74c3c;
+        }
+
+        .back-to-hotels-btn.active:hover {
+            background-color: #c0392b;
+        }
+
+        #hotelMenuHeader {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="VindhuVendors.png" alt="Vindhu Vendors">
+                </div>            
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="mobile-nav" id="mobileNav">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#hotels">Hotels</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="user-actions" id="userActions">
+                            <a href="#" id="loginBtn">Login</a>
+                            <a href="#" id="signupBtn">Sign Up</a>
+                        </li>
+                        <li class="profile-section" id="profileSection" style="display: none;">
+                            <div class="user-profile">
+                                <span class="profile-icon">👤</span>
+                                <span class="username" id="usernameDisplay">User</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav-links desktop-nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#hotels">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="desktop-user-section">
+                    <div class="user-actions" id="desktopUserActions">
+                        <a href="#" id="desktopLoginBtn">Login</a>
+                        <a href="#" id="desktopSignupBtn">Sign Up</a>
+                    </div>
+                    <div class="profile-section" id="desktopProfileSection" style="display: none;">
+                        <div class="user-profile">
+                            <span class="profile-icon">👤</span>
+                            <span class="username" id="desktopUsernameDisplay">User</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-icon" id="cartIcon">
+                    <span>🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</hena>
+                <span class="close">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <a href="#" id="forgotPasswordBtn" class="forgot-password">Forgot Password?</a>
+                    <div id="loginMessage" class="message"></div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign Up</h2>
+                <span class="close">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPhone">Phone Number</label>
+                        <input type="tel" id="signupPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupCity">City</label>
+                        <select id="signupCity" required>
+                            <option value="">Select City</option>
+                            <option value="Visakhapatnam">Visakhapatnam</option>
+                            <option value="Vijayawada">Vijayawada</option>
+                            <option value="Tirupati">Tirupati</option>
+                            <option value="Guntur">Guntur</option>
+                            <option value="Rajahmundry">Rajahmundry</option>
+                            <option value="Kakinada">Kakinada</option>
+                            <option value="Nellore">Nellore</option>
+                            <option value="Kurnool">Kurnool</option>
+                            <option value="Anantapur">Anantapur</option>
+                            <option value="Amaravati">Amaravati</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" required>
+                    </div>
+                    <div id="signupMessage" class="message"></div>
+                    <button type="submit" class="submit-btn">Sign Up</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reset Password</h2>
+                <span class="close">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="forgotPasswordForm">
+                    <div class="form-group">
+                        <label for="forgotEmail">Email</label>
+                        <input type="email" id="forgotEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirm New Password</label>
+                        <input type="password" id="confirmNewPassword" required>
+                    </div>
+                    <div id="forgotPasswordMessage" class="message"></div>
+                    <button type="submit" class="submit-btn">Reset Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>User Profile</h2>
+                <span class="close">×</span>
+            </div>
+            <div class="modal-body">
+                <div class="profile-details">
+                    <div class="profile-avatar" id="profileAvatar">👤</div>
+                    <div class="profile-info">
+                        <h3 id="profileName">User Name</h3>
+                        <p id="profileEmail">user@example.com</p>
+                        <p id="profilePhone">+91 1234567890</p>
+                        <p id="profileCity">City</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="profilePhoto">Upload Profile Photo</label>
+                    <input type="file" id="profilePhoto" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="profileCitySelect">Change City</label>
+                    <select id="profileCitySelect">
+                        <option value="">Select City</option>
+                        <option value="Visakhapatnam">Visakhapatnam</option>
+                        <option value="Vijayawada">Vijayawada</option>
+                        <option value="Tirupati">Tirupati</option>
+                        <option value="Guntur">Guntur</option>
+                        <option value="Rajahmundry">Rajahmundry</option>
+                        <option value="Kakinada">Kakinada</option>
+                        <option value="Nellore">Nellore</option>
+                        <option value="Kurnool">Kurnool</option>
+                        <option value="Anantapur">Anantapur</option>
+                        <option value="Amaravati">Amaravati</option>
+                    </select>
+                </div>
+                <div id="profileMessage" class="message"></div>
+                <div class="profile-actions">
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover Andhra Pradesh Cuisine</h1>
+            <p>Explore authentic Andhra flavors from top hotels across the state, with seamless ordering and contactless delivery.</p>
+            <a href="#hotels" class="cta-btn">Explore Hotels</a>
+        </div>
+    </section>
+
+    <!-- Trending Dishes Section -->
+    <section class="trending-dishes" id="trending">
+        <div class="container">
+            <h2 class="section-title">Trending Andhra Dishes</h2>
+            <div class="trending-container">
+                <div class="trending-wrapper">
+                    <!-- Trending items will be dynamically populated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotels Section -->
+    <section class="hotels-section" id="hotels">
+        <div class="container">
+            <h2 class="section-title">Famous Hotels in Andhra Pradesh</h2>
+            <div class="hotel-cards">
+                <!-- Hotel cards will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Menu Section -->
+    <section id="hotelMenuSection" style="display: none; justify-content: center;">
+        <div class="container">
+            <div id="hotelMenuHeader"></div>
+            <div class="veg-nonveg-filters">
+                <button class="food-type-btn active" data-type="all">All Items</button>
+                <button class="food-type-btn" data-type="veg">
+                    <span class="veg-icon"></span> Vegetarian
+                </button>
+                <button class="food-type-btn" data-type="nonveg">
+                    <span class="nonveg-icon"></span> Non-Vegetarian
+                </button>
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="Starters">Starters</button>
+                <button class="category-btn" data-category="Main Course">Main Course</button>
+                <button class="category-btn" data-category="Breakfast">Breakfast</button>
+                <button class="category-btn" data-category="Snacks">Snacks</button>
+                <button class="category-btn" data-category="Desserts">Desserts</button>
+                <button class="category-btn" data-category="Beverages">Beverages</button>               
+            </div>
+            <div class="menu-items" id="hotelMenuItems">
+                <!-- Menu items will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button id="closeCart">×</button>
+        </div>
+        <div id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">₹0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Delivery Fee:</span>
+                    <span>₹39.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Tax (5%):</span>
+                    <span id="tax">₹0.00</span>
+                </div>
+                <div class="total-row total">
+                    <span>Total:</span>
+                    <span id="total">₹0.00</span>
+                </div>
+            </div>
+            <button id="checkoutBtn" disabled>Checkout</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+91 9346063816</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>vindhuvendors@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🏢</div>
+                        <div class="contact-details">
+                            <h3>Office</h3>
+                            <p>Full Stack Lab, New Block, NBKRIST, Vidyanagar, Kota, Tirupati Dist-524413, Andhra Pradesh, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Thursday: 10:00 AM - 5:00 PM</p>
+                            <p>Friday - Saturday: 10:00 AM - 3:00 PM</p>
+                            <p>Sunday - Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div id="formMessage"></div>
+                    <button type="submit" id="submitForm">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Confirmation</h2>
+                <span id="closeModal" class="close">×</span>
+            </div>
+            <div class="modal-body">
+                <div id="orderSummary">
+                    <!-- Order summary will be displayed here -->
+                </div>
+                <p>Thank you for your order! It will be delivered shortly.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>VindhuVendors</h3>
+                    <p>Connecting you to the authentic flavors of Andhra Pradesh with a wide range of vegetarian and non-vegetarian delicacies from top hotels.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61574738473854" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/VindhuVendors" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/vindhu_vendors/" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#hotels">Hotels</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Cuisines</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hotels">Andhra Cuisine</a></li>
+                        <li><a href="#hotels">South Indian</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="demo.js"></script> 
+</body>
+</html>
