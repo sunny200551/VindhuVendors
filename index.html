@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styling.css">
   <style>
-        /*  for profile photo and forgot password */
+        /* Same styles as provided, with minor additions for profile photo and forgot password */
         .profile-avatar img {
             width: 100px;
             height: 100px;
@@ -16,8 +16,8 @@
             object-fit: cover;
         }
         .profile-icon img {
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
         }
         .forgot-password {
@@ -54,6 +54,7 @@
         header {
             background-color: #020202;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
             top: 0;
             z-index: 1000;
         }
@@ -64,13 +65,13 @@
             align-items: center;
             padding: 15px 0;
         }
-
         .logo {
             font-size: 24px;
             font-weight: 700;
             color: #e74c3c;
             text-decoration: none;
         }
+
         .logo img {
             width: 130px;
             height: auto;
@@ -1122,6 +1123,7 @@
             position: relative;
             margin-bottom: 20px;
         }
+        
     </style>
 </head>
 <body>
@@ -1367,7 +1369,7 @@
     </section>
 
     <!-- Hotel Menu Section -->
-    <section id="hotelMenuSection" style="display: none;">
+    <section id="hotelMenuSection" style="display: none; justify-content: center;">
         <div class="container">
             <div id="hotelMenuHeader"></div>
             <div class="veg-nonveg-filters">
@@ -1530,12 +1532,13 @@
                     <ul class="footer-links">
                         <li><a href="#hotels">Andhra Cuisine</a></li>
                         <li><a href="#hotels">South Indian</a></li>
+                        <li><a href="index2.html">VindhuVendors Outlet</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script2.js"></script> 
+    <script src="demo.js"></script> 
 </body>
 </html>
