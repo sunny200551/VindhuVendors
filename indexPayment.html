@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - VindhuVendors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Payment Page Styles - Enhanced with Animations */
+:root {
+    --primary: #FF6B6B;
+    --primary-dark: #FF5252;
+    --primary-light: #FF8E8E;
+    --secondary: #4ECDC4;
+    --accent: #FFD166;
+    --dark: #2D3436;
+    --light: #F7F7F7;
+    --success: #06D6A0;
+    --warning: #FFD166;
+    --danger: #EF476F;
+    --veg: #0F9D58;
+    --nonveg: #FF5252;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header with Animation */
+header {
+    background-color: #020202;
+    color: white;
+    padding: 1.0rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: headerSlideDown 0.5s ease-out;
+}
+
+@keyframes headerSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.user-profile:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.profile-icon {
+    font-size: 24px;
+}
+
+.username {
+    font-weight: 500;
+}
+
+/* Main Payment Container */
+.payment-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 30px;
+    left: 200px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    animation: fadeIn 0.8s ease-out;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Payment Cards */
+.payment-card {
+    background: rgb(251, 251, 251);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.payment-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.payment-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--dark);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.payment-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 3px;
+}
+
+/* Order Items */
+.order-items {
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.order-item:nth-child(1) { animation-delay: 0.1s; }
+.order-item:nth-child(2) { animation-delay: 0.2s; }
+.order-item:nth-child(3) { animation-delay: 0.3s; }
+.order-item:nth-child(4) { animation-delay: 0.4s; }
+
+.order-total {
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 2px solid #eee;
+}
+
+.order-total div {
+    margin-bottom: 8px;
+}
+
+/* Delivery Details */
+.delivery-details h3 {
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+/* Updated Form Group Styles */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 30px); /* Reduced width to prevent overflow */
+    padding: 10px 15px; /* Slightly reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px; /* Reduced font size */
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    outline: none;
+    background-color: white;
+}
+
+/* Payment Options */
+.payment-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-option:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.payment-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+    transition: 0.5s;
+}
+
+.payment-option:hover::before {
+    left: 100%;
+}
+
+.payment-option input {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.payment-icon {
+    font-size: 28px;
+    margin-right: 15px;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover .payment-icon {
+    transform: scale(1.1);
+    color: var(--primary-dark);
+}
+
+.payment-method-title {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 14px; /* Reduced font size */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis if text is too long */
+    max-width: 180px; /* Set a max width */
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .payment-method-title {
+        max-width: 120px; /* Smaller max width on mobile */
+        font-size: 13px;
+    }
+    
+    .payment-option {
+        padding: 10px 8px;
+    }
+    
+    .payment-icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-method-title {
+        max-width: 100px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: calc(100% - 20px);
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+/* UPI Apps */
+.upi-apps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.upi-app {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.upi-app::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.upi-app:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.upi-app:hover::after {
+    opacity: 1;
+}
+
+.upi-app img {
+    max-width: 80%;
+    max-height: 80%;
+    transition: transform 0.3s ease;
+}
+
+.upi-app:hover img {
+    transform: scale(1.1);
+}
+
+/* Coupon Section */
+.coupon-section {
+    margin-top: 25px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.coupon-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.remove-coupon {
+    background-color: #f8f9fa;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.remove-coupon:hover {
+    background-color: var(--danger);
+    color: white;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.coupon-input {
+    display: flex;
+    gap: 10px;
+}
+
+.coupon-input input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.coupon-input input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    outline: none;
+}
+
+.coupon-input button {
+    padding: 0 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.coupon-input button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(255, 82, 82, 0.3);
+}
+
+.coupon-message {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.coupon-success {
+    background: rgba(6, 214, 160, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.coupon-error {
+    background: rgba(239, 71, 111, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(239, 71, 111, 0.3);
+}
+
+.coupon-info {
+    background: rgba(255, 209, 102, 0.1);
+    color: var(--warning);
+    border: 1px solid rgba(255, 209, 102, 0.3);
+}
+
+/* Pay Button */
+.pay-button {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.pay-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 82, 82, 0.4);
+}
+
+.pay-button:active {
+    transform: translateY(0);
+}
+
+.pay-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.pay-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Order Confirmation */
+.order-confirmation {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 0.8s ease-out;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .order-confirmation h2 {
+            color: var(--success);
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .order-confirmation p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--dark);
+        }
+
+        .confirmation-details {
+            text-align: left;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideInUp 0.6s ease-out;
+            margin-bottom: 30px;
+        }
+
+        .confirmation-details div {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .confirmation-details div:last-child {
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 2px solid #eee;
+            border-bottom: none;
+        }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .payment-card {
+        padding: 20px;
+    }
+    
+    .payment-title {
+        font-size: 1.3rem;
+    }
+    
+    .user-profile {
+        padding: 6px 12px;
+    }
+    
+    .username {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .upi-apps {
+        justify-content: center;
+    }
+    
+    .coupon-input {
+        flex-direction: column;
+    }
+    
+    .coupon-input button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="VindhuVendors.png" alt="Vindhu Vendors">
+                </div>            
+                <div class="desktop-user-section">
+                    <div class="profile-section" id="desktopProfileSection" style="display: none;">
+                        <div class="user-profile">
+                            <span class="profile-icon">👤</span>
+                            <span class="username" id="desktopUsernameDisplay">User</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="payment-container" id="paymentPage">
+        <section class="payment-summary">
+            <div class="payment-card">
+                <h2 class="payment-title">Order Summary</h2>
+                <div class="order-items" id="orderItems">
+                    <!-- Order items will be populated by JavaScript -->
+                </div>
+                <div class="order-total">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="paymentSubtotal">₹0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Delivery Fee:</span>
+                        <span>₹39.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Tax (5%):</span>
+                        <span id="paymentTax">₹0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Discount:</span>
+                        <span id="paymentDiscount">-₹0.00</span>
+                    </div>
+                    <div class="total-row" style="font-weight: bold; font-size: 1.2rem;">
+                        <span>Total:</span>
+                        <span id="paymentTotal">₹0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-card delivery-details">
+                <h3>Delivery Details</h3>
+                <div class="form-group">
+                    <label for="deliveryName">Full Name</label>
+                    <input type="text" id="deliveryName" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryEmail">Email Address</label>
+                    <input type="email" id="deliveryEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryPhone">Phone Number</label>
+                    <input type="tel" id="deliveryPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <textarea id="deliveryAddress" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryInstructions">Delivery Instructions (Optional)</label>
+                    <textarea id="deliveryInstructions" rows="2"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-methods">
+            <div class="payment-card">
+                <h2 class="payment-title">Payment Method</h2>
+                
+                <div class="payment-option">
+                    <input type="radio" name="paymentMethod" id="upi" value="upi" checked>
+                    <i class="payment-icon fas fa-mobile-alt" style="color: #020202;"></i>
+                    <div>
+                        <div class="payment-method-title">UPI Payment</div>
+                        <div class="upi-apps">
+                            <div class="upi-app" data-upi="googlepay">
+                                <img src="https://i.pinimg.com/474x/ea/4d/f5/ea4df535ef139dc6b904040a8323095f.jpg" alt="Google Pay">
+                            </div>
+                            <div class="upi-app" data-upi="phonepe">
+                                <img src="https://i.pinimg.com/474x/ae/5f/e3/ae5fe3dc423e44c0ddbef5dc64fa356b.jpg" alt="PhonePe">
+                            </div>
+                            <div class="upi-app" data-upi="paytm">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Paytm_logo.png/640px-Paytm_logo.png" alt="Paytm">
+                            </div>
+                            <div class="upi-app" data-upi="amazonpay">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Amazon Pay">
+                            </div>
+                            <div class="upi-app" data-upi="bhim">
+                                <img src="https://i.pinimg.com/474x/75/ef/bf/75efbf7c2561a7ad650fef8735ab16e5.jpg" alt="BHIM">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-option" style="border: 1px solid #ddd; padding: 20px; border-radius: 10px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <input type="radio" name="paymentMethod" id="card" value="card" style="margin-right: 8px;">
+                        <i class="payment-icon far fa-credit-card" style="color: #36f4a2; font-size: 20px; margin-right: 8px;"></i>
+                        <div class="payment-method-title" style="font-weight: bold; font-size: 15px;width: 110px ;">Credit/Debit <br> Card</div>
+                    </div>
+                    
+                    <div id="card-details" class="payment-details" style="margin-top: 20px; display: none;">
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label for="cardNumber" style="display: block; margin-bottom: 5px;">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" 
+                                style="width: 140px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label for="cardName" style="display: block; margin-bottom: 5px;">Name on Card</label>
+                            <input type="text" id="cardName" placeholder="John Doe" 
+                                style="width: 100px; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
+                        </div>
+                        <div style="display: flex; gap: 15px;">
+                            <div class="form-group" style="margin-bottom: 10px;">
+                                <label for="cardExpiry" style="display: block; margin-bottom: 5px;">Expiry Date</label>
+                                <input type="text" id="cardExpiry" placeholder="MM/YY" 
+                                    style="width: 80px; padding: 7px; border-radius: 6px; border: 1px solid #ccc;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 10px;">
+                                <label for="cardCvv" style="display: block; margin-bottom: 5px;">CVV</label>
+                                <input type="text" id="cardCvv" placeholder="123" 
+                                    style="width: 80px; padding: 7px; border-radius: 6px; border: 1px solid #ccc;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                
+                <div class="payment-option">
+                    <input type="radio" name="paymentMethod" id="netbanking" value="netbanking">
+                    <i class="payment-icon fas fa-university" style="color: rgb(65, 66, 28);"></i>
+                    <div class="payment-method-title">Net Banking</div>
+                    <div class="netbanking-details" style=" margin-top: 15px;">
+                        <div class="form-group">
+                            <label for="bankSelect">Select Bank</label>
+                            <select id="bankSelect">
+                                <option value="">Select your bank</option>
+                                <option value="sbi">State Bank of India</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="axis">Axis Bank</option>
+                                <option value="kotak">Kotak Mahindra Bank</option>
+                                <option value="pnb">Punjab National Bank</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-option">
+                    <input type="radio" name="paymentMethod" id="cod" value="cod">
+                    <i class="payment-icon fas fa-money-bill-wave" style="color: #0F9D58;"></i>
+                    <div class="payment-method-title">Cash on Delivery</div>
+                </div>
+            </div>
+
+            <div class="payment-card coupon-section">
+                <h3>Apply Coupon</h3>
+                <div class="coupon-input">
+                    <input type="text" id="couponCode" placeholder="Enter coupon code">
+                    <button id="applyCoupon">Apply</button>
+                </div>
+                <div id="couponMessage" class="coupon-message"></div>
+                <div class="coupon-actions" id="couponActions" style="display: none;">
+                    <button id="removeCoupon" class="remove-coupon">Remove Coupon</button>
+                </div>
+            </div>
+
+            <button id="payNow" class="pay-button" style="background-color: #49af4b;">Pay Now</button>
+        </section>
+    </main>
+
+    <div id="orderConfirmation" class="order-confirmation" style="display: none;">
+        <h2>Order Confirmed!</h2>
+        <p>Thank you for your order. It will be delivered shortly.</p>
+        
+        <div class="confirmation-details">
+            <div>
+                <span>Order ID:</span>
+                <span id="confirmationOrderId">VV123456</span>
+            </div>
+            <div>
+                <span>Delivery To:</span>
+                <span id="confirmationName">Your Name</span>
+            </div>
+            <div>
+                <span>Email:</span>
+                <span id="confirmationEmail">your@gmail.com</span>
+            </div>
+            <div>
+                <span>Phone:</span>
+                <span id="confirmationPhone">9874563210</span>
+            </div>
+            <div>
+                <span>Address:</span>
+                <span id="confirmationAddress">123 street, City, India</span>
+            </div>
+            <div>
+                <span>Payment Method:</span>
+                <span id="confirmationPayment">UPI (Google Pay)</span>
+            </div>
+            <span>Total Amount:</span>
+            <span id="confirmationTotal">₹599.00</span>
+        </div>
+        
+        <p>You will be redirected to the home page shortly...</p>
+    </div>
+</div>
+
+    <script>
+        // Get cart data from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let discount = 0;
+        let discountPercentage = 0;
+        let couponApplied = false;
+        let appliedCouponCode = '';
+    
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display order summary
+            displayOrderSummary();
+            
+            // Set user details if logged in
+            if (currentUser) {
+                document.getElementById('deliveryName').value = currentUser.name || '';
+                document.getElementById('deliveryEmail').value = currentUser.email || '';
+                document.getElementById('deliveryPhone').value = currentUser.phone || '';
+                document.getElementById('desktopUsernameDisplay').textContent = currentUser.name ? currentUser.name.split(' ')[0] : 'User';
+                document.getElementById('desktopProfileSection').style.display = 'block';
+            }
+            
+            // Initially hide all payment details sections
+            document.querySelectorAll('.payment-details').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Set up payment method toggles
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    // Hide all payment details sections
+                    document.querySelectorAll('.payment-details').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    // Show selected payment details section
+                    const selectedDetailsId = this.value + '-details';
+                    const selectedDetails = document.getElementById(selectedDetailsId);
+                    if (selectedDetails) {
+                        selectedDetails.style.display = 'block';
+                    }
+                });
+            });
+            
+            // UPI app selection
+            document.querySelectorAll('.upi-app').forEach(app => {
+                app.addEventListener('click', function() {
+                    document.querySelectorAll('.upi-app').forEach(a => {
+                        a.style.borderColor = '#ddd';
+                    });
+                    this.style.borderColor = '#e65100';
+                });
+            });
+            
+            // Apply coupon
+            document.getElementById('applyCoupon').addEventListener('click', applyCoupon);
+            
+            // Remove coupon
+            document.getElementById('removeCoupon').addEventListener('click', removeCoupon);
+            
+            // Pay now button
+            document.getElementById('payNow').addEventListener('click', processPayment);
+        });
+    
+        function displayOrderSummary() {
+            const orderItemsContainer = document.getElementById('orderItems');
+            let subtotal = 0;
+            
+            if (cart.length === 0) {
+                orderItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+                return;
+            }
+            
+            let itemsHTML = '';
+            cart.forEach(item => {
+                itemsHTML += `
+                    <div class="order-item">
+                        <span>${item.quantity} × ${item.name}</span>
+                        <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                `;
+                subtotal += item.price * item.quantity;
+            });
+            
+            orderItemsContainer.innerHTML = itemsHTML;
+            
+            const deliveryFee = 39;
+            const tax = subtotal * 0.05;
+            const total = subtotal + deliveryFee + tax - discount;
+            
+            document.getElementById('paymentSubtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('paymentTax').textContent = `₹${tax.toFixed(2)}`;
+            document.getElementById('paymentDiscount').textContent = `-₹${discount.toFixed(2)}`;
+            document.getElementById('paymentTotal').textContent = `₹${total.toFixed(2)}`;
+        }
+    
+        function applyCoupon() {
+            const couponCode = document.getElementById('couponCode').value.trim();
+            const couponMessage = document.getElementById('couponMessage');
+            
+            if (couponApplied) {
+                couponMessage.textContent = 'Coupon is already applied.';
+                couponMessage.className = 'coupon-message coupon-info';
+                return;
+            }
+            
+            // Check if coupon code starts with '23kb1a0' and has at least 3 more characters
+            if (couponCode.toLowerCase().startsWith('23kb1a0') && couponCode.length >= 10) {
+                // Generate random discount between 5% and 15%
+                discountPercentage = Math.floor(Math.random() * 11) + 5; // 5-15%
+                
+                // Calculate discount amount
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                discount = subtotal * (discountPercentage / 100);
+                
+                couponMessage.textContent = `Coupon applied! You got ${discountPercentage}% discount.`;
+                couponMessage.className = 'coupon-message coupon-success';
+                
+                // Show remove coupon button
+                document.getElementById('couponActions').style.display = 'block';
+                
+                // Set coupon applied flag
+                couponApplied = true;
+                appliedCouponCode = couponCode;
+                
+                // Disable apply button
+                document.getElementById('applyCoupon').disabled = true;
+                
+                // Update order summary with discount
+                displayOrderSummary();
+            } else {
+                discount = 0;
+                discountPercentage = 0;
+                couponMessage.textContent = 'Invalid coupon code. Please try again.';
+                couponMessage.className = 'coupon-message coupon-error';
+                
+                // Update order summary without discount
+                displayOrderSummary();
+            }
+        }
+        
+        function removeCoupon() {
+            discount = 0;
+            discountPercentage = 0;
+            couponApplied = false;
+            appliedCouponCode = '';
+            
+            document.getElementById('couponMessage').textContent = 'Coupon removed.';
+            document.getElementById('couponMessage').className = 'coupon-message coupon-info';
+            document.getElementById('couponActions').style.display = 'none';
+            document.getElementById('applyCoupon').disabled = false;
+            
+            // Update order summary without discount
+            displayOrderSummary();
+        }
+    
+        function processPayment() {
+            // Validate delivery details
+            const name = document.getElementById('deliveryName').value.trim();
+            const email = document.getElementById('deliveryEmail').value.trim();
+            const phone = document.getElementById('deliveryPhone').value.trim();
+            const address = document.getElementById('deliveryAddress').value.trim();
+            
+            if (!name || !email || !phone || !address) {
+                alert('Please fill in all required delivery details.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Get payment method
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                alert('Please select a payment method.');
+                return;
+            }
+            
+            const paymentValue = paymentMethod.value;
+            let paymentDetails = '';
+            
+            switch (paymentValue) {
+                case 'upi':
+                    const selectedUpi = document.querySelector('.upi-app[style*="border-color: rgb(230, 81, 0)"]');
+                    if (!selectedUpi) {
+                        alert('Please select a UPI app.');
+                        return;
+                    }
+                    paymentDetails = `UPI (${selectedUpi.dataset.upi})`;
+                    break;
+                case 'card':
+                    const cardNumber = document.getElementById('cardNumber').value.trim();
+                    if (!cardNumber || cardNumber.length < 16) {
+                        alert('Please enter a valid card number.');
+                        return;
+                    }
+                    paymentDetails = 'Card ending with ' + cardNumber.slice(-4);
+                    break;
+                case 'netbanking':
+                    const bank = document.getElementById('bankSelect').value;
+                    if (!bank) {
+                        alert('Please select your bank.');
+                        return;
+                    }
+                    paymentDetails = 'Net Banking (' + document.getElementById('bankSelect').options[document.getElementById('bankSelect').selectedIndex].text + ')';
+                    break;
+                case 'cod':
+                    paymentDetails = 'Cash on Delivery';
+                    break;
+            }
+            
+            // Generate random order ID
+            const orderId = 'VV' + Math.floor(100000 + Math.random() * 900000);
+            
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = 39;
+            const tax = subtotal * 0.05;
+            const total = subtotal + deliveryFee + tax - discount;
+            
+            // Show confirmation
+            document.getElementById('paymentPage').style.display = 'none';
+            document.getElementById('orderConfirmation').style.display = 'block';
+            
+            // Set confirmation details
+            document.getElementById('confirmationOrderId').textContent = orderId;
+            document.getElementById('confirmationName').textContent = name;
+            document.getElementById('confirmationEmail').textContent = email;
+            document.getElementById('confirmationPhone').textContent = phone;
+            document.getElementById('confirmationAddress').textContent = address;
+            document.getElementById('confirmationPayment').textContent = paymentDetails;
+            
+            /* Set order summary in confirmation
+            let confirmationItemsHTML = '';
+            cart.forEach(item => {
+                confirmationItemsHTML += `
+                    <div class="confirmation-item">
+                        <span>${item.quantity} × ${item.name}</span>
+                        <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('confirmationOrderItems').innerHTML = confirmationItemsHTML;
+            document.getElementById('confirmationSubtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('confirmationTax').textContent = `₹${tax.toFixed(2)}`;
+            document.getElementById('confirmationDiscount').textContent = `-₹${discount.toFixed(2)}`;
+            document.getElementById('confirmationTotal').textContent = `₹${total.toFixed(2)}`;
+            */
+            document.getElementById('confirmationTotal').textContent = `₹${total.toFixed(2)}`;
+            
+            // Clear cart
+            localStorage.removeItem('cart');
+            
+            // Redirect after 5 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
