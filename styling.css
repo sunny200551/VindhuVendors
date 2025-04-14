@@ -93,7 +93,7 @@
 
     /* Hero Section */
     .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('FoodBG.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('FoodBG.jpg') center/cover no-repeat;
         color: white;
         text-align: center;
         padding: 110px 20px;
