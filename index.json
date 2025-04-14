@@ -11,7 +11,7 @@
           "id": 101,
           "name": "Andhra Chicken Biryani",
           "price": 350,
-          "image": "https://i.pinimg.com/474x/ac/21/ff/ac21ff85f5b9ee0d21ec6a33cddba093.jpg",
+          "image": "https://i.pinimg.com/474x/1a/59/f0/1a59f0e988c227075ce7a6e261f9f362.jpg",
           "description": "Spicy biryani with tender chicken, infused with coastal Andhra spices.",
           "category": "Main Course",
           "isVeg": false
@@ -20,7 +20,7 @@
           "id": 102,
           "name": "Prawn Masala Fry",
           "price": 400,
-          "image": "https://i.pinimg.com/474x/12/ce/29/12ce2958fc0c08584621d0c174e2568a.jpg",
+          "image": "https://i.pinimg.com/474x/38/0e/17/380e17933538c6bb2a4115f185284a14.jpg",
           "description": "Fresh prawns cooked in a tangy and spicy masala.",
           "category": "Starters",
           "isVeg": false
