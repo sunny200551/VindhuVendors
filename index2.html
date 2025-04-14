@@ -2676,7 +2676,11 @@ function initTrendingDishes() {
         menuData.find(item => item.id === 5),  // Chicken Tikka
         menuData.find(item => item.id === 1),  // Paneer Tikka
         menuData.find(item => item.id === 24), // Mutton Biryani
-        menuData.find(item => item.id === 30)  // Lassi
+        menuData.find(item => item.id === 30),  // Lassi
+	menuData.find(item => item.id === 3),
+        menuData.find(item => item.id === 13),  
+        menuData.find(item => item.id === 20)  
+
     ];
 
     const trendingWrapper = document.querySelector('.trending-wrapper');
@@ -3116,7 +3120,7 @@ function placeOrder() {
     localStorage.setItem('cart', JSON.stringify(cart));
     
     // Redirect to payment page
-    window.location.href = 'indexPayment.html';
+    window.location.href = 'IPayment.html';
     }
 // Handle contact form submission
 function handleFormSubmit(e) {
