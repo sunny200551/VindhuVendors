@@ -581,7 +581,7 @@ function placeOrder() {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = `Ipayment.html`;
+    window.location.href = `IPayment.html`;
 }
 
 function handleFormSubmit(e) {
